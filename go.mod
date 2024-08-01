@@ -1,4 +1,4 @@
-module queryengine
+module github.com/whiletrues/swiftseek
 
 go 1.22.2
 
