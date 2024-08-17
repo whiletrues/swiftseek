@@ -1,4 +1,4 @@
-package plans
+package logicalplan
 
 import "github.com/whiletrues/swiftseek/src/datatypes"
 
