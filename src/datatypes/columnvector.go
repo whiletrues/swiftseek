@@ -5,7 +5,7 @@ import (
 )
 
 type ColumnVector interface {
-	GetType() arrow.DataType
+	GetType() arrow.Type
 	GetValue(index int) any
 	Size() int
 }

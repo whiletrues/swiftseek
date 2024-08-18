@@ -21,7 +21,7 @@ func (projection *Projection) GetSchema() *datatypes.Schema {
 	projectionFields := make([]datatypes.Field, 0)
 
 	for _, expression := range projection.expressions {
-		field := expression.toField(projection.input)
+		field, _ := expression.ToField(projection.input)
 		projectionFields = append(projectionFields, field)
 	}
 

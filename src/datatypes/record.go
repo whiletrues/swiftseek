@@ -1,18 +1,24 @@
 package datatypes
 
-type Record struct {
-	schema Schema
+type RecordBatch struct {
+	schema *Schema
 	fields []ColumnVector
 }
 
-func (record *Record) RowCount() int {
+func CreateRecord(fields []ColumnVector) RecordBatch {
+	return RecordBatch{
+		fields: fields,
+	}
+}
+
+func (record *RecordBatch) RowCount() int {
 	return 0
 }
 
-func (record *Record) ColumnCount() int {
+func (record *RecordBatch) ColumnCount() int {
 	return 0
 }
 
-func (record *Record) GetField(index int) ColumnVector {
+func (record *RecordBatch) GetField(index int) ColumnVector {
 	return record.fields[index]
 }

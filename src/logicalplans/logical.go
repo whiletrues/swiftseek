@@ -5,6 +5,6 @@ import (
 )
 
 type LogicalExpression interface {
-	toField(input LogicalPlan) datatypes.Field
+	ToField(input LogicalPlan) (datatypes.Field, error)
 	String() string
 }

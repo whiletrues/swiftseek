@@ -1,6 +1,8 @@
 package logicalplan
 
 import (
+	"strings"
+
 	"github.com/apache/arrow/go/arrow"
 	"github.com/whiletrues/swiftseek/src/datatypes"
 )
@@ -24,7 +26,7 @@ func CreateMathExpr(
 	}
 }
 
-func (expression *MathBinaryExpression) ToField(input LogicalPlan) (*datatypes.Field, error) {
+func (expression *MathBinaryExpression) ToField(input LogicalPlan) (datatypes.Field, error) {
 	return datatypes.CreateField(string(expression.op), arrow.BOOL), nil
 }
 
@@ -41,5 +43,23 @@ func (expression *MathBinaryExpression) GetRight() LogicalExpression {
 }
 
 func (expression *MathBinaryExpression) String() string {
-	return expression.left.String() + " " + string(expression.op) + " " + expression.right.String()
+	var sb strings.Builder
+
+	sb.WriteString("(")
+
+	if expression.left != nil {
+		sb.WriteString(expression.left.String())
+	}
+
+	sb.WriteString(" ")
+
+	sb.WriteString(string(expression.op))
+
+	sb.WriteString(" ")
+
+	if expression.right != nil {
+		sb.WriteString(expression.right.String())
+	}
+
+	return sb.String()
 }

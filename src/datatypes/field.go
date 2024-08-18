@@ -7,8 +7,8 @@ type Field struct {
 	arrowType arrow.Type
 }
 
-func CreateField(name string, arrowType arrow.Type) *Field {
-	return &Field{name: name, arrowType: arrowType}
+func CreateField(name string, arrowType arrow.Type) Field {
+	return Field{name: name, arrowType: arrowType}
 }
 
 func (f *Field) GetName() string {

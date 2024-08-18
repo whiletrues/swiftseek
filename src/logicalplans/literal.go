@@ -11,7 +11,7 @@ type LiteralString struct {
 	value string
 }
 
-func (literal *LiteralString) ToField(input LogicalPlan) (*datatypes.Field, error) {
+func (literal *LiteralString) ToField(input LogicalPlan) (datatypes.Field, error) {
 	return datatypes.CreateField(literal.value, arrow.STRING), nil
 }
 
@@ -19,7 +19,7 @@ type LiteralLong struct {
 	value int64
 }
 
-func (literal *LiteralLong) ToField(input LogicalPlan) (*datatypes.Field, error) {
+func (literal *LiteralLong) ToField(input LogicalPlan) (datatypes.Field, error) {
 
 	name := strconv.FormatInt(literal.value, 10)
 

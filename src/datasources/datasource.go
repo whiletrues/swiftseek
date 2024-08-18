@@ -6,5 +6,5 @@ import (
 
 type DataSource interface {
 	GetSchema() *datatypes.Schema
-	Scan() []datatypes.Record // Todo : Use Iter
+	Scan(projection []string) []datatypes.RecordBatch // Todo : Use Iter
 }

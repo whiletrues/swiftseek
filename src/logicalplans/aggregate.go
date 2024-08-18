@@ -1,6 +1,8 @@
 package logicalplan
 
 import (
+	"strings"
+
 	"github.com/whiletrues/swiftseek/src/datatypes"
 )
 
@@ -38,11 +40,24 @@ func (aggregateExpr *AggregateExpression) GetOperator() AggregateOperator {
 	return aggregateExpr.operator
 }
 
-func (aggregateExpr *AggregateExpression) ToField(input LogicalPlan) (*datatypes.Field, error) {
-	field := aggregateExpr.expr.toField(input)
+func (aggregateExpr *AggregateExpression) ToField(input LogicalPlan) (datatypes.Field, error) {
+	field, _ := aggregateExpr.expr.ToField(input)
 	return datatypes.CreateField(aggregateExpr.name, field.GetArrowType()), nil
 }
 
 func (aggregateExpr *AggregateExpression) String() string {
-	return string(aggregateExpr.operator) + "(" + aggregateExpr.expr.String() + ")"
+
+	var sb strings.Builder
+
+	sb.WriteString("(")
+	sb.WriteString(string(aggregateExpr.name))
+	sb.WriteString(" ")
+	sb.WriteString(string(aggregateExpr.operator))
+	if aggregateExpr.expr != nil {
+		sb.WriteString(aggregateExpr.expr.String())
+	}
+
+	sb.WriteString(")")
+
+	return sb.String()
 }

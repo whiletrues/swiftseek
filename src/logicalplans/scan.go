@@ -13,10 +13,10 @@ type Scan struct {
 	projection []string
 }
 
-func CreateScan(path string, source *datasources.DataSource, projection []string) *Scan {
+func CreateScan(path string, source datasources.DataSource, projection []string) *Scan {
 	return &Scan{
 		path:       path,
-		source:     source,
+		source:     &source,
 		projection: projection,
 	}
 }
