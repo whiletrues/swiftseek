@@ -1,9 +1,8 @@
-package logicalexpression
+package logicalplan
 
 import (
 	"github.com/apache/arrow/go/arrow"
 	"github.com/whiletrues/swiftseek/src/datatypes"
-	logicalplan "github.com/whiletrues/swiftseek/src/logicalplans"
 )
 
 type MathBinaryExpression struct {
@@ -25,7 +24,7 @@ func CreateMathExpr(
 	}
 }
 
-func (expression *MathBinaryExpression) ToField(input logicalplan.LogicalPlan) (*datatypes.Field, error) {
+func (expression *MathBinaryExpression) ToField(input LogicalPlan) (*datatypes.Field, error) {
 	return datatypes.CreateField(string(expression.op), arrow.BOOL), nil
 }
 

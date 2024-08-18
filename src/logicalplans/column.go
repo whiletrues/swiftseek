@@ -1,17 +1,16 @@
-package logicalexpression
+package logicalplan
 
 import (
 	"errors"
 
 	"github.com/whiletrues/swiftseek/src/datatypes"
-	logicalplan "github.com/whiletrues/swiftseek/src/logicalplans"
 )
 
 type Column struct {
 	name string
 }
 
-func (column *Column) ToField(input logicalplan.LogicalPlan) (*datatypes.Field, error) {
+func (column *Column) ToField(input LogicalPlan) (*datatypes.Field, error) {
 	schema := input.GetSchema()
 
 	fields := schema.GetFields()

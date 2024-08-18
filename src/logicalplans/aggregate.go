@@ -1,8 +1,7 @@
-package logicalexpression
+package logicalplan
 
 import (
 	"github.com/whiletrues/swiftseek/src/datatypes"
-	logicalplan "github.com/whiletrues/swiftseek/src/logicalplans"
 )
 
 type AggregateOperator string
@@ -39,7 +38,7 @@ func (aggregateExpr *AggregateExpression) GetOperator() AggregateOperator {
 	return aggregateExpr.operator
 }
 
-func (aggregateExpr *AggregateExpression) ToField(input logicalplan.LogicalPlan) (*datatypes.Field, error) {
+func (aggregateExpr *AggregateExpression) ToField(input LogicalPlan) (*datatypes.Field, error) {
 	field := aggregateExpr.expr.toField(input)
 	return datatypes.CreateField(aggregateExpr.name, field.GetArrowType()), nil
 }

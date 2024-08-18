@@ -1,4 +1,4 @@
-package logicalexpression
+package logicalplan
 
 type Operator string
 

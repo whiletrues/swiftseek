@@ -5,6 +5,6 @@ import (
 )
 
 type DataSource interface {
-	Schema() datatypes.Schema
+	GetSchema() *datatypes.Schema
 	Scan() []datatypes.Record // Todo : Use Iter
 }
