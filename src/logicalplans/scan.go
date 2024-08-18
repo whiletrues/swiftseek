@@ -1,6 +1,8 @@
 package logicalplan
 
 import (
+	"strings"
+
 	"github.com/whiletrues/swiftseek/src/datasources"
 	"github.com/whiletrues/swiftseek/src/datatypes"
 )
@@ -28,4 +30,22 @@ func (scan *Scan) GetSchema() *datatypes.Schema {
 
 func (scan *Scan) GetChildrens() []LogicalPlan {
 	return []LogicalPlan{}
+}
+
+func (scan *Scan) String() string {
+	var sb strings.Builder
+
+	sb.WriteString("Scan :> ")
+	sb.WriteString(scan.path)
+
+	if len(scan.projection) > 0 {
+		sb.WriteString(" [")
+		for _, field := range scan.projection {
+			sb.WriteString(field)
+			sb.WriteString(", ")
+		}
+		sb.WriteString("]")
+	}
+
+	return sb.String()
 }

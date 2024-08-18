@@ -42,3 +42,7 @@ func (aggregateExpr *AggregateExpression) ToField(input LogicalPlan) (*datatypes
 	field := aggregateExpr.expr.toField(input)
 	return datatypes.CreateField(aggregateExpr.name, field.GetArrowType()), nil
 }
+
+func (aggregateExpr *AggregateExpression) String() string {
+	return string(aggregateExpr.operator) + "(" + aggregateExpr.expr.String() + ")"
+}

@@ -23,3 +23,7 @@ func (selection *Selection) GetSchema() *datatypes.Schema {
 func (selection *Selection) GetChildrens() []LogicalPlan {
 	return []LogicalPlan{selection.input}
 }
+
+func (selection *Selection) String() string {
+	return "Filter :> " + selection.expression.String()
+}

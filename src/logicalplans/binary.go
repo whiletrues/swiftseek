@@ -27,4 +27,5 @@ type BinaryExpression interface {
 	GetOperator() Operator
 	GetLeft() LogicalExpression
 	GetRight() LogicalExpression
+	String() string
 }

@@ -10,6 +10,12 @@ type Column struct {
 	name string
 }
 
+func CreateColumn(name string) *Column {
+	return &Column{
+		name: name,
+	}
+}
+
 func (column *Column) ToField(input LogicalPlan) (*datatypes.Field, error) {
 	schema := input.GetSchema()
 
@@ -25,5 +31,9 @@ func (column *Column) ToField(input LogicalPlan) (*datatypes.Field, error) {
 }
 
 func (column *Column) GetName() string {
+	return column.name
+}
+
+func (column *Column) String() string {
 	return column.name
 }

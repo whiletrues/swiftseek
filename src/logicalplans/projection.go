@@ -31,3 +31,13 @@ func (projection *Projection) GetSchema() *datatypes.Schema {
 func (projection *Projection) GetChildrens() []LogicalPlan {
 	return []LogicalPlan{projection.input}
 }
+
+func (projection *Projection) String() string {
+
+	result := "Projection :> ["
+	for _, expression := range projection.expressions {
+		result += expression.String() + ", "
+	}
+
+	return "Projection :> [ " + result + " ]"
+}

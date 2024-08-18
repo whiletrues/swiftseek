@@ -39,3 +39,7 @@ func (expression *MathBinaryExpression) GetLeft() LogicalExpression {
 func (expression *MathBinaryExpression) GetRight() LogicalExpression {
 	return expression.right
 }
+
+func (expression *MathBinaryExpression) String() string {
+	return expression.left.String() + " " + string(expression.op) + " " + expression.right.String()
+}

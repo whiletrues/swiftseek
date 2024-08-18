@@ -6,4 +6,5 @@ import (
 
 type LogicalExpression interface {
 	toField(input LogicalPlan) datatypes.Field
+	String() string
 }
